@@ -10,6 +10,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-int asd(){
+int handle(char *message){
+    printf("%s\n", message);
     return 0;
 }
