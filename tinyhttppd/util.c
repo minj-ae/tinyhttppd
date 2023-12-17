@@ -10,6 +10,7 @@
 #include <ctype.h>
 #include <errno.h>
 #include <string.h>
+#include <sys/_types/_socklen_t.h>
 
 union
 {

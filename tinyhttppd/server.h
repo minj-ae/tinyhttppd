@@ -13,6 +13,7 @@ int stohi(const char *ip);
 int addressc(const char * address);
 int portc(const char * port);
 int var(const char * max);
+int filter(char *message);
 int handle(char *message);
 
 #endif

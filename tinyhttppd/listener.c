@@ -18,6 +18,7 @@ int start(int host, int port, int max){
     struct sockaddr_in server_socket;
     struct sockaddr_in client_socket;
     socklen_t client_address_size;
+    int hflag;
 
     char message[48000];
 
@@ -46,9 +47,12 @@ int start(int host, int port, int max){
         if (pid == -1) {close(client);}
         if (pid == 0) {
             memset(message, '\0', 48000);
-            message_size = recv(client, message, sizeof(message)-1, 0);
-            if (message_size == -1) { perror("read error"); continue;}
-            handle(message);
+            message_size = recv(client, message, sizeof(message)-1, MSG_PEEK);
+            if (message_size == -1) { perror("read error"); printf("1\n"); continue;}
+            hflag = filter(message);
+            if(hflag == -1){
+                handle(message);
+            }
         }
         else {
             continue;
